@@ -1,0 +1,140 @@
+[gd_scene load_steps=3 format=3 uid="uid://4ieq1k1w0ln0"]
+
+[ext_resource type="Script" path="res://metronome.gd" id="1_yol5r"]
+[ext_resource type="AudioStream" uid="uid://b5f66q3qrxx5q" path="res://219159__jagadamba__frogblock03.ogg" id="3_8k6ax"]
+
+[node name="Metronome" type="Node2D"]
+script = ExtResource("1_yol5r")
+
+[node name="CustomAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_8k6ax")
+volume_db = -12.0
+
+[node name="CustomAudio2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_8k6ax")
+volume_db = -12.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+offset_right = 182.0
+offset_bottom = 85.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "BPM
+"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Start"
+horizontal_alignment = 1
+
+[node name="StartSpinBox" type="SpinBox" parent="CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+max_value = 100000.0
+value = 90.0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "End
+"
+horizontal_alignment = 1
+
+[node name="EndSpinBox" type="SpinBox" parent="CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+max_value = 1e+06
+value = 180.0
+
+[node name="VSeparator" type="VSeparator" parent="CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/MarginContainer2/VBoxContainer2"]
+layout_mode = 2
+text = "Duration"
+
+[node name="DurationSpinBox" type="SpinBox" parent="CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/MarginContainer2/VBoxContainer2"]
+layout_mode = 2
+max_value = 1e+06
+value = 500.0
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/PanelContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="LoadAudio1Button" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Load sound 1..."
+
+[node name="LoadAudio2Button" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Load sound 2..."
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 338.0
+offset_top = 38.0
+offset_right = 527.0
+offset_bottom = 88.0
+
+[node name="TimeElapsedLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="BPMLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[connection signal="value_changed" from="CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/StartSpinBox" to="." method="_on_start_spin_box_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/EndSpinBox" to="." method="_on_end_spin_box_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/MarginContainer2/VBoxContainer2/DurationSpinBox" to="." method="_on_duration_spin_box_value_changed"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer2/LoadAudio1Button" to="." method="_on_load_audio_1_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer2/LoadAudio2Button" to="." method="_on_load_audio_2_button_pressed"]
